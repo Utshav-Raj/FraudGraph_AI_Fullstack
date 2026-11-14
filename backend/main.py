@@ -17,10 +17,19 @@ from sklearn.metrics import (
 
 app = FastAPI(title="FraudGraph AI API", version="1.0.0",
               description="Transaction fraud classification and graph analysis prototype")
+
 app.add_middleware(
-    CORSMiddleware, allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
-    allow_credentials=True, allow_methods=["*"], allow_headers=["*"]
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://fraud-graph-ai-fullstack-pev4v8noe-utshay-rajs-projects.vercel.app"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
 )
+
 
 STATE = {"model": None, "scaler": None, "feature_columns": None, "scale_cols": None,
          "metrics": None, "report": None, "confusion_matrix": None, "dataset_info": None}
